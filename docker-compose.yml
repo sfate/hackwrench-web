@@ -1,0 +1,38 @@
+version: '2'
+services:
+  web: &web_base
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: telegram-bot
+    volumes:
+      - .:/bot-app
+    ports:
+      - '3000:3000'
+    links: &web_links
+      - mongo:mongo.local
+    environment: &web_environment
+      RACK_ENV: 'development'
+      RAILS_ENV: 'development'
+    volumes_from:
+      - bundle
+    command: rails server -p 3000 -b 0.0.0.0
+  mongo:
+    image: mongo:3.0.4
+    container_name: bot_mongo
+    volumes_from:
+      - mongo_data
+    ports:
+      - '27017:27017'
+    command: --smallfiles --rest --auth
+  mongo_data:
+    image: mongo:3.0.4
+    volumes:
+      - /data/db
+    command: 'true'
+  bundle:
+    image: 'hackwrenchweb_web'
+    command: 'true'
+    volumes:
+      - /bundle
+
