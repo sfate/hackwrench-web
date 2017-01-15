@@ -1,0 +1,16 @@
+{
+  "name": "hackwrench-web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:sfate/hackwrench-web.git",
+  "author": "Alexey Bobyrev <alexey.bobyrev@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-bootstrap-switch": "^0.5.1",
+    "bootstrap": "^3.3.7",
+    "bootstrap-switch": "^3.3.2",
+    "jquery": "^3.1.1",
+    "jquery-ujs": "^1.2.2"
+  }
+}
